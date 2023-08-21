@@ -7,8 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.adoptable.companions.dto.AnimalDTO;
-import com.adoptable.companions.dto.AnimalProtectoraDTO;
+import com.adoptable.companions.core.domain.AnimalDTO;
+import com.adoptable.companions.core.domain.AnimalDetails;
 import com.adoptable.companions.entity.AnimalEntity;
 import com.adoptable.companions.error.AnimalNotFoundException;
 import com.adoptable.companions.mapper.AnimalProtectoraMapper;
@@ -21,14 +21,14 @@ public class AnimalService {
 	@Autowired
 	AnimalRepository animalRepository;
 
-	public AnimalProtectoraDTO obtenerInformacionAnimalYProtectora(Long id) {
+	public AnimalDetails obtenerInformacionAnimalYProtectora(Long id) {
 		log.info("obtenerInformacionAnimalYProtectora con el id: " + id);
 		AnimalEntity animal = animalRepository.findById(id).orElse(null);
 		if (animal == null) {
 			log.info("No se obtiene ningun resultado por lo cual se manda una excepcion");
 			throw new AnimalNotFoundException("Animal no encontrado");
 		}
-		AnimalProtectoraDTO res = AnimalProtectoraMapper.INSTANCE.toDTO(animal, animal.getProtectora());
+		AnimalDetails res = AnimalProtectoraMapper.INSTANCE.toDTO(animal, animal.getProtectora());
 		res.getAnimalDTO().setEdad(AnimalProtectoraMapper.INSTANCE.calculateAge(animal.getAnioNacimiento()));
 		log.info(
 				"Se encontro un registro con el id indicado. los datos obtenidos son los siguiente: " + res.toString());

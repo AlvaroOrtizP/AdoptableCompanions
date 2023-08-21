@@ -12,8 +12,8 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
-import com.adoptable.companions.dto.AnimalDTO;
-import com.adoptable.companions.dto.AnimalProtectoraDTO;
+import com.adoptable.companions.core.domain.AnimalDTO;
+import com.adoptable.companions.core.domain.AnimalDetails;
 import com.adoptable.companions.entity.AnimalEntity;
 import com.adoptable.companions.entity.ProtectoraEntity;
 
@@ -28,7 +28,7 @@ public interface AnimalProtectoraMapper {
     @Mapping(source = "protectora.name", target = "protectoraDTO.protectoraNombre")
     @Mapping(source = "protectora.logo", target = "protectoraDTO.protectoraLogo")
     @Mapping(source = "animal.imagenUrl", target = "animalDTO.animalImagenUrl")
-    AnimalProtectoraDTO toDTO(AnimalEntity animal, @Context ProtectoraEntity protectora);
+    AnimalDetails toDTO(AnimalEntity animal, @Context ProtectoraEntity protectora);
     
     
     

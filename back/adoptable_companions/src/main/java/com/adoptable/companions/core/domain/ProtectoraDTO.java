@@ -1,4 +1,4 @@
-package com.adoptable.companions.dto;
+package com.adoptable.companions.core.domain;
 
 import lombok.Getter;
 import lombok.Setter;

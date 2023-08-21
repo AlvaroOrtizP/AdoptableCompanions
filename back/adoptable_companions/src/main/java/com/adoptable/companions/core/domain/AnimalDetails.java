@@ -1,4 +1,4 @@
-package com.adoptable.companions.dto;
+package com.adoptable.companions.core.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class AnimalProtectoraDTO {
+public class AnimalDetails {
 	private AnimalDTO animalDTO;
 	private ProtectoraDTO protectoraDTO;
     
